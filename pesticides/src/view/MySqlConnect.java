@@ -15,13 +15,15 @@ public class MySqlConnect {
     Connection conn=null;
     public static Connection ConnectDB(){
         try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/MiniProject","root","Viragandham@2095");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/pesticides forum work flow","root","Viragandham@2095");
            // JOptionPane.showMessageDialog(null,"Connected to database");
+           
            
             return conn;
             
         }catch(Exception e){
+            //System.out.print(":"+e+":");
             JOptionPane.showConfirmDialog(null,e);
             return null;
         }

@@ -5,9 +5,12 @@
  */
 package view;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import view.MySqlConnect;
 
 /**
  *
@@ -38,6 +41,9 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         MD = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -45,13 +51,15 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         mname = new java.awt.TextField();
         jLabel2 = new javax.swing.JLabel();
-        Mtype = new java.awt.TextField();
         jLabel3 = new javax.swing.JLabel();
         mphone = new java.awt.TextField();
         jLabel4 = new javax.swing.JLabel();
         mdealer = new java.awt.TextField();
         jLabel5 = new javax.swing.JLabel();
         mgst = new java.awt.TextField();
+        submitbutton = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        status = new javax.swing.JLabel();
         label1 = new java.awt.Label();
 
         jMenu1.setText("jMenu1");
@@ -61,6 +69,14 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         jMenuItem3.setText("jMenuItem3");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
+        jCheckBoxMenuItem2.setSelected(true);
+        jCheckBoxMenuItem2.setText("jCheckBoxMenuItem2");
+
+        jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,7 +90,7 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 901, Short.MAX_VALUE)
+            .addGap(0, 1224, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +109,7 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 901, Short.MAX_VALUE)
+            .addGap(0, 1224, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,19 +120,24 @@ public class Manufacturer_Details extends javax.swing.JFrame {
 
         jLabel1.setText("Name");
 
-        jLabel2.setText("Type");
-
-        Mtype.addActionListener(new java.awt.event.ActionListener() {
+        mname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MtypeActionPerformed(evt);
+                mnameActionPerformed(evt);
             }
         });
+
+        jLabel2.setText("Type");
 
         jLabel3.setText("phone no");
 
         mphone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mphoneActionPerformed(evt);
+            }
+        });
+        mphone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                mphoneKeyTyped(evt);
             }
         });
 
@@ -136,6 +157,23 @@ public class Manufacturer_Details extends javax.swing.JFrame {
             }
         });
 
+        submitbutton.setBackground(new java.awt.Color(75, 205, 83));
+        submitbutton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        submitbutton.setText("submit");
+        submitbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitbuttonActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pesticides", "Fertilizers", "Bio" }));
+        jComboBox1.setToolTipText("");
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -145,21 +183,32 @@ public class Manufacturer_Details extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(mname, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(80, 80, 80)
+                                    .addComponent(mphone, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(submitbutton)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(80, 80, 80)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(mgst, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                                        .addComponent(mdealer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
+                        .addGap(164, 164, 164)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(84, 84, 84)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mdealer, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Mtype, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mname, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mphone, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mgst, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addContainerGap(607, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,22 +218,26 @@ public class Manufacturer_Details extends javax.swing.JFrame {
                     .addComponent(mname, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(32, 32, 32)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Mtype, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mphone, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mdealer, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mgst, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(submitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113)
+                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         MD.addTab("Add_Manufacturer", jPanel3);
@@ -206,7 +259,7 @@ public class Manufacturer_Details extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(MD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,25 +281,61 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseClicked
 
-    private void MtypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MtypeActionPerformed
+    private void mgstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgstActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MtypeActionPerformed
-
-    private void mphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mphoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mphoneActionPerformed
+    }//GEN-LAST:event_mgstActionPerformed
 
     private void mdealerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mdealerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mdealerActionPerformed
 
-    private void mgstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgstActionPerformed
+    private void mphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mphoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mgstActionPerformed
+    }//GEN-LAST:event_mphoneActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void mnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnameActionPerformed
+
+    }//GEN-LAST:event_mnameActionPerformed
+
+    private void submitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbuttonActionPerformed
+        try{   
+        conn = MySqlConnect.ConnectDB();
+            String sql = "INSERT INTO `pesticides forum work flow`.`manufacturer` (`m_name`, `type`, `m_contact_no`, `contact_pearson`, `m_gst`) VALUES (?,?,?,?,?);";
+           
+            PreparedStatement preparedStmt = conn.prepareStatement(sql);
+                preparedStmt.setString(1, mname.getText().toUpperCase());
+                preparedStmt.setString(2,(String)jComboBox1.getSelectedItem());
+                preparedStmt.setInt(3,Integer.parseInt(mphone.getText()));
+                preparedStmt.setString(4,mdealer.getText());
+                preparedStmt.setString(5,mgst.getText());
+                preparedStmt.executeUpdate();
+                status.setText("Manufacturer is Added");/*
+           PreparedStatement preparedStmt = conn.prepareStatement(sql);
+                preparedStmt.setString(1, "na");
+                preparedStmt.setString(2,"bio");
+                preparedStmt.setInt(3,33);
+                preparedStmt.setString(4,"df");
+                preparedStmt.setString(5,"df");
+                preparedStmt.executeUpdate();
+                status.setText("Manufacturer is Added");*/
+             }
+        catch  (SQLException ex) {
+            System.out.println(ex);
+        } 
+    }//GEN-LAST:event_submitbuttonActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void mphoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mphoneKeyTyped
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c)||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_mphoneKeyTyped
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -281,13 +370,16 @@ public class Manufacturer_Details extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane MD;
-    private java.awt.TextField Mtype;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
@@ -299,6 +391,8 @@ public class Manufacturer_Details extends javax.swing.JFrame {
     private java.awt.TextField mgst;
     private java.awt.TextField mname;
     private java.awt.TextField mphone;
+    private javax.swing.JLabel status;
+    private javax.swing.JButton submitbutton;
     // End of variables declaration//GEN-END:variables
 
   

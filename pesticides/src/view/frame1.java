@@ -147,7 +147,9 @@ public class frame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_ManufactureButtonActionPerformed
 
     private void ManufactureButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManufactureButtonMouseEntered
-
+            Manufacturer_Details soc = new Manufacturer_Details();
+                soc.setVisible(true);
+                this.setVisible(false);
     }//GEN-LAST:event_ManufactureButtonMouseEntered
 
     /**
