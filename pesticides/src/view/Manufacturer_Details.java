@@ -10,6 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 import view.MySqlConnect;
 
 /**
@@ -46,7 +49,6 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         MD = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         mname = new java.awt.TextField();
@@ -60,6 +62,11 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         submitbutton = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         status = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        errorlabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mtable = new javax.swing.JTable();
+        Lbutton = new javax.swing.JButton();
         label1 = new java.awt.Label();
 
         jMenu1.setText("jMenu1");
@@ -90,33 +97,14 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1224, Short.MAX_VALUE)
+            .addGap(0, 794, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 725, Short.MAX_VALUE)
+            .addGap(0, 609, Short.MAX_VALUE)
         );
 
         MD.addTab("Delete_Manufacturer", jPanel1);
-
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel2MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1224, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 725, Short.MAX_VALUE)
-        );
-
-        MD.addTab("Manufacturer_details", jPanel2);
 
         jLabel1.setText("Name");
 
@@ -208,7 +196,7 @@ public class Manufacturer_Details extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(607, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,10 +225,90 @@ public class Manufacturer_Details extends javax.swing.JFrame {
                 .addComponent(submitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(113, 113, 113)
                 .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         MD.addTab("Add_Manufacturer", jPanel3);
+
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
+
+        errorlabel.setText("message_display");
+
+        mtable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "mid", "m_name", "type", "phone_no", "Dealer", "gst"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(mtable);
+
+        Lbutton.setBackground(new java.awt.Color(255, 51, 102));
+        Lbutton.setText("Load");
+        Lbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LbuttonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Lbutton)
+                .addGap(58, 58, 58))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(errorlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(265, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Lbutton)
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(111, 111, 111)
+                .addComponent(errorlabel)
+                .addContainerGap(162, Short.MAX_VALUE))
+        );
+
+        MD.addTab("Manufacturer_details", jPanel2);
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setBackground(new java.awt.Color(0, 204, 51));
@@ -279,6 +347,20 @@ public class Manufacturer_Details extends javax.swing.JFrame {
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         // TODO add your handling code here:
+//         Vector comboBoxItems = new Vector();
+//        String sql = "SELECT * FROM `pesticides forum work flow`.manufacturer;";
+//         conn = MySqlConnect.ConnectDB();
+//         try{
+//             Statement st = conn.createStatement();
+//             rs = st.executeQuery(sql);
+//              while (rs.next()) {
+//                    comboBoxItems.add(rs.getString(1));
+//                }
+//             
+//         }
+//         catch(SQLException ex){
+//           
+//         }
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void mgstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgstActionPerformed
@@ -336,6 +418,45 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mphoneKeyTyped
 
+    private void LbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LbuttonActionPerformed
+        // TODO add your handling code here:
+        mtable.setDefaultEditor(Object.class, null);
+        mtable.setDefaultEditor(Object.class,null);
+        System.out.println("Manufacture table is loading.....");
+        conn = MySqlConnect.ConnectDB();
+        String sql = "SELECT * FROM `pesticides forum work flow`.manufacturer;";
+        try{
+            Statement st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            int rowcount=0;
+            DefaultTableModel model = (DefaultTableModel) mtable.getModel();
+             while (rs.next()) {
+                String column1 = rs.getString(1);
+                String column2 = rs.getString(2);
+                String column3 = rs.getString(3);
+                String column4 = rs.getString(4);
+                String column5 = rs.getString(5);
+                String column6 = rs.getString(6);
+                System.out.println(column1 + " " + column2 + " " + column3 +  " " +column4+ " " + column5+ " "+ column6 );
+                 model.setRowCount(rowcount + 1);
+                if (mtable.getModel() != null) {
+                    mtable.getModel().setValueAt(column1, rowcount, 0);
+                     mtable.getModel().setValueAt(column2, rowcount, 1);
+                      mtable.getModel().setValueAt(column3, rowcount, 2);
+                       mtable.getModel().setValueAt(column4, rowcount, 3);
+                        mtable.getModel().setValueAt(column5, rowcount, 4);
+                         mtable.getModel().setValueAt(column6, rowcount, 5);
+                }
+                //mtable.getModel().setValueAt(column2, rowcount, 1);
+
+                rowcount++;
+            }
+          }
+        catch(SQLException ex){
+          errorlabel.setText("exception occured while opening the table");
+       }
+    }//GEN-LAST:event_LbuttonActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -369,7 +490,9 @@ public class Manufacturer_Details extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Lbutton;
     private javax.swing.JTabbedPane MD;
+    private javax.swing.JLabel errorlabel;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -386,11 +509,13 @@ public class Manufacturer_Details extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label1;
     private java.awt.TextField mdealer;
     private java.awt.TextField mgst;
     private java.awt.TextField mname;
     private java.awt.TextField mphone;
+    private javax.swing.JTable mtable;
     private javax.swing.JLabel status;
     private javax.swing.JButton submitbutton;
     // End of variables declaration//GEN-END:variables
