@@ -477,24 +477,21 @@ public class Manufacturer_Details extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        /*   try{
+           try{
             conn = MySqlConnect.ConnectDB();
-            //System.out.println("Deleting..."+conn);
-            String sql2= "DELETE FROM `pesticides forum work flow`.`manufacturer` WHERE (`mid` = ?) ;";
+            String sql2= "DELETE FROM `pesticides forum work flow`.`manufacturer` WHERE ( `mid` = ? )";
             PreparedStatement pst =  conn.prepareStatement(sql2);
          // System.out.println(Integer.parseInt(jTextField1_id.getText()));
-         int X=Integer.parseInt(jTextField1_id.getText());
-         pst.setInt(1, X);
-         
-         
-           // pst.setString(1,(String)jTextField1_id.getText());
+            int X=Integer.parseInt(jTextField1_id.getText());
+                pst.setInt(1, X);
+         // pst.setString(1,(String)jTextField1_id.getText());
                System.out.println(pst);
-            pst.execute(sql2);
+            pst.execute();
             delete_message.setText("manufacturer is deleted");
             
        }catch(SQLException ex){
                System.out.println(ex);
-       } */
+       } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
