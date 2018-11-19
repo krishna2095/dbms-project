@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import java.awt.event.KeyEvent;
@@ -11,12 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Krishna
- */
+
 public class Manufacturer_Details extends javax.swing.JFrame {
 
     /**
@@ -59,16 +53,16 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         submitbutton = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         status = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        errorlabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        mtable = new javax.swing.JTable();
-        Lbutton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jTextField1_id = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         delete_message = new java.awt.Label();
+        jPanel2 = new javax.swing.JPanel();
+        errorlabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mtable = new javax.swing.JTable();
+        Lbutton = new javax.swing.JButton();
         label1 = new java.awt.Label();
 
         jMenu1.setText("jMenu1");
@@ -185,20 +179,19 @@ public class Manufacturer_Details extends javax.swing.JFrame {
                         .addGap(164, 164, 164)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(20, 20, 20)
                         .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(478, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(mname, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -218,89 +211,12 @@ public class Manufacturer_Details extends javax.swing.JFrame {
                     .addComponent(mgst, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addComponent(submitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         MD.addTab("Add_Manufacturer", jPanel3);
-
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel2MouseClicked(evt);
-            }
-        });
-
-        errorlabel.setText("message_display");
-
-        mtable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "mid", "m_name", "type", "phone_no", "Dealer", "gst", "balance_amt"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(mtable);
-
-        Lbutton.setBackground(new java.awt.Color(255, 51, 102));
-        Lbutton.setText("Load");
-        Lbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LbuttonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(errorlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(476, 476, 476)
-                        .addComponent(Lbutton)))
-                .addContainerGap(486, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(Lbutton)
-                .addGap(32, 32, 32)
-                .addComponent(errorlabel)
-                .addContainerGap(187, Short.MAX_VALUE))
-        );
-
-        MD.addTab("Manufacturer_details", jPanel2);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -345,10 +261,85 @@ public class Manufacturer_Details extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addComponent(delete_message, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         MD.addTab("Delete_Manufacturer", jPanel1);
+
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
+
+        mtable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "mid", "m_name", "type", "phone_no", "Dealer", "gst", "balance_amt", "products"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(mtable);
+
+        Lbutton.setBackground(new java.awt.Color(255, 51, 102));
+        Lbutton.setText("Load");
+        Lbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LbuttonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errorlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(538, 538, 538)
+                        .addComponent(Lbutton))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(486, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Lbutton)
+                .addGap(187, 187, 187)
+                .addComponent(errorlabel)
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
+
+        MD.addTab("Manufacturer_details", jPanel2);
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setBackground(new java.awt.Color(0, 204, 51));
@@ -365,9 +356,9 @@ public class Manufacturer_Details extends javax.swing.JFrame {
                         .addGap(218, 218, 218)
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
+                        .addContainerGap()
                         .addComponent(MD, javax.swing.GroupLayout.PREFERRED_SIZE, 1088, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,20 +366,40 @@ public class Manufacturer_Details extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MD, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addComponent(MD, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void MDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MDMouseClicked
-     
+
     }//GEN-LAST:event_MDMouseClicked
 
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-        
-    }//GEN-LAST:event_jPanel2MouseClicked
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void submitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbuttonActionPerformed
+        try{
+            conn = MySqlConnect.ConnectDB();
+            String sql = "INSERT INTO `pesticides forum work flow`.`manufacturer` (`m_name`, `type`, `m_contact_no`, `contact_pearson`, `m_gst`) VALUES (?,?,?,?,?);";
+
+            PreparedStatement preparedStmt = conn.prepareStatement(sql);
+            preparedStmt.setString(1, mname.getText().toUpperCase());
+            preparedStmt.setString(2,(String)jComboBox1.getSelectedItem());
+            preparedStmt.setInt(3, (int) Double.parseDouble(mphone.getText()));
+            preparedStmt.setString(4,mdealer.getText());
+            preparedStmt.setString(5,mgst.getText());
+            System.out.print(preparedStmt);
+            preparedStmt.executeUpdate();
+            status.setText("Manufacturer is Added");
+        }
+        catch  (SQLException ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_submitbuttonActionPerformed
 
     private void mgstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgstActionPerformed
         // TODO add your handling code here:
@@ -398,6 +409,14 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mdealerActionPerformed
 
+    private void mphoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mphoneKeyTyped
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c)||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_mphoneKeyTyped
+
     private void mphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mphoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mphoneActionPerformed
@@ -406,37 +425,28 @@ public class Manufacturer_Details extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mnameActionPerformed
 
-    private void submitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbuttonActionPerformed
-        try{   
-        conn = MySqlConnect.ConnectDB();
-            String sql = "INSERT INTO `pesticides forum work flow`.`manufacturer` (`m_name`, `type`, `m_contact_no`, `contact_pearson`, `m_gst`) VALUES (?,?,?,?,?);";
-           
-            PreparedStatement preparedStmt = conn.prepareStatement(sql);
-                preparedStmt.setString(1, mname.getText().toUpperCase());
-                preparedStmt.setString(2,(String)jComboBox1.getSelectedItem());
-                preparedStmt.setInt(3, (int) Double.parseDouble(mphone.getText()));
-                preparedStmt.setString(4,mdealer.getText());
-                preparedStmt.setString(5,mgst.getText());
-                System.out.print(preparedStmt);
-                preparedStmt.executeUpdate();
-                status.setText("Manufacturer is Added");
-             }
-        catch  (SQLException ex) {
-            System.out.println(ex);
-        } 
-    }//GEN-LAST:event_submitbuttonActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        try{
+            conn = MySqlConnect.ConnectDB();
+            String sql2= "DELETE FROM `pesticides forum work flow`.`manufacturer` WHERE ( `mid` = ? )";
+            PreparedStatement pst =  conn.prepareStatement(sql2);
+            // System.out.println(Integer.parseInt(jTextField1_id.getText()));
+            int X=Integer.parseInt(jTextField1_id.getText());
+            pst.setInt(1, X);
+            // pst.setString(1,(String)jTextField1_id.getText());
+            System.out.println(pst);
+            pst.execute();
+            delete_message.setText("manufacturer is deleted");
 
-    private void mphoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mphoneKeyTyped
-        char c = evt.getKeyChar();
-        if(!(Character.isDigit(c)||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))) {
-            getToolkit().beep();
-            evt.consume();
+        }catch(SQLException ex){
+            System.out.println(ex);
         }
-    }//GEN-LAST:event_mphoneKeyTyped
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     private void LbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LbuttonActionPerformed
         // TODO add your handling code here:
@@ -450,49 +460,32 @@ public class Manufacturer_Details extends javax.swing.JFrame {
             rs = st.executeQuery(sql);
             int rowcount=0;
             DefaultTableModel model = (DefaultTableModel) mtable.getModel();
-             while (rs.next()) {
+            while (rs.next()) {
                 String column1 = rs.getString(1);
                 String column2 = rs.getString(2);
                 String column3 = rs.getString(3);
                 String column4 = rs.getString(4);
                 String column5 = rs.getString(5);
                 String column6 = rs.getString(6);
-                 model.setRowCount(rowcount + 1);
+                model.setRowCount(rowcount + 1);
                 if (mtable.getModel() != null) {
                     mtable.getModel().setValueAt(column1, rowcount, 0);
-                     mtable.getModel().setValueAt(column2, rowcount, 1);
-                      mtable.getModel().setValueAt(column3, rowcount, 2);
-                       mtable.getModel().setValueAt(column4, rowcount, 3);
-                        mtable.getModel().setValueAt(column5, rowcount, 4);
-                         mtable.getModel().setValueAt(column6, rowcount, 5);
+                    mtable.getModel().setValueAt(column2, rowcount, 1);
+                    mtable.getModel().setValueAt(column3, rowcount, 2);
+                    mtable.getModel().setValueAt(column4, rowcount, 3);
+                    mtable.getModel().setValueAt(column5, rowcount, 4);
+                    mtable.getModel().setValueAt(column6, rowcount, 5);
                 }
 
                 rowcount++;
             }
-          }
+        }
         catch(SQLException ex){
-          errorlabel.setText("exception occured while opening the table");
-       }
+            errorlabel.setText("exception occured while opening the table");
+        }
+      //     JScrollPane scrollPane = new JScrollPane(mtable);
+       // mtable.setFillsViewportHeight(true); 
     }//GEN-LAST:event_LbuttonActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-           try{
-            conn = MySqlConnect.ConnectDB();
-            String sql2= "DELETE FROM `pesticides forum work flow`.`manufacturer` WHERE ( `mid` = ? )";
-            PreparedStatement pst =  conn.prepareStatement(sql2);
-         // System.out.println(Integer.parseInt(jTextField1_id.getText()));
-            int X=Integer.parseInt(jTextField1_id.getText());
-                pst.setInt(1, X);
-         // pst.setString(1,(String)jTextField1_id.getText());
-               System.out.println(pst);
-            pst.execute();
-            delete_message.setText("manufacturer is deleted");
-            
-       }catch(SQLException ex){
-               System.out.println(ex);
-       } 
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
