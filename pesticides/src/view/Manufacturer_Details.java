@@ -645,13 +645,13 @@ public class Manufacturer_Details extends javax.swing.JFrame {
             int rowcount=0;
             System.out.print(rst);
             while(rst.next()){
-                 String column1 = rst.getString(1);
-                String column2 = rst.getString(2);
-                String column3 = rst.getString(3);
-                String column4 = rst.getString(4);
-                String column5 = rst.getString(5);
-                String column6 = rst.getString(6);
-                String column7 = rst.getString(7);
+                 String column1 = rst.getString(2);
+                String column2 = rst.getString(4);
+                String column3 = rst.getString(5);
+                String column4 = rst.getString(6);
+                String column5 = rst.getString(7);
+                String column6 = rst.getString(8);
+                String column7 = rst.getString(9);
                 model.setRowCount(rowcount + 1);
                 if (ptable.getModel() != null) {
                     ptable.getModel().setValueAt(column1, rowcount, 0);
