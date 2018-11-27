@@ -1,5 +1,7 @@
 package view;
 
+import java.sql.Connection;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -40,9 +42,10 @@ public class frame1 extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         label1 = new java.awt.Label();
         ManufactureButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        CustomerDetails = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        ManufactureButton1 = new javax.swing.JButton();
+        Products = new javax.swing.JButton();
+        ContractButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -103,11 +106,11 @@ public class frame1 extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 255, 255));
-        jButton2.setText("Customer Detail");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        CustomerDetails.setBackground(new java.awt.Color(0, 255, 255));
+        CustomerDetails.setText("Customer Detail");
+        CustomerDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                CustomerDetailsActionPerformed(evt);
             }
         });
 
@@ -119,17 +122,31 @@ public class frame1 extends javax.swing.JFrame {
             }
         });
 
-        ManufactureButton1.setBackground(new java.awt.Color(0, 204, 204));
-        ManufactureButton1.setText("Products ");
-        ManufactureButton1.setRolloverEnabled(false);
-        ManufactureButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Products.setBackground(new java.awt.Color(0, 204, 204));
+        Products.setText("Products ");
+        Products.setRolloverEnabled(false);
+        Products.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ManufactureButton1MouseEntered(evt);
+                ProductsMouseEntered(evt);
             }
         });
-        ManufactureButton1.addActionListener(new java.awt.event.ActionListener() {
+        Products.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManufactureButton1ActionPerformed(evt);
+                ProductsActionPerformed(evt);
+            }
+        });
+
+        ContractButton.setBackground(new java.awt.Color(0, 204, 204));
+        ContractButton.setText("Contract");
+        ContractButton.setRolloverEnabled(false);
+        ContractButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ContractButtonMouseEntered(evt);
+            }
+        });
+        ContractButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContractButtonActionPerformed(evt);
             }
         });
 
@@ -139,19 +156,20 @@ public class frame1 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ManufactureButton)
-                        .addGap(40, 40, 40)
-                        .addComponent(ManufactureButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Products, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ContractButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(ManufactureButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
+                            .addComponent(CustomerDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,10 +179,14 @@ public class frame1 extends javax.swing.JFrame {
                 .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ManufactureButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ManufactureButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(443, 443, 443))
+                    .addComponent(CustomerDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Products, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ContractButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,7 +197,7 @@ public class frame1 extends javax.swing.JFrame {
        Manufacturer_Details soc = new Manufacturer_Details();
        soc.setVisible(true);
        //so.SetVisible(false);
-       this.setVisible(false);
+       //this.setVisible(false);
         
     }//GEN-LAST:event_ManufactureButtonActionPerformed
 
@@ -183,11 +205,11 @@ public class frame1 extends javax.swing.JFrame {
       
     }//GEN-LAST:event_ManufactureButtonMouseEntered
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void CustomerDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerDetailsActionPerformed
        Customer_Details coc = new Customer_Details();
        coc.setVisible(true);
-       this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+       //this.setVisible(false);
+    }//GEN-LAST:event_CustomerDetailsActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -195,13 +217,24 @@ public class frame1 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void ManufactureButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManufactureButton1MouseEntered
+    private void ProductsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductsMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_ManufactureButton1MouseEntered
+    }//GEN-LAST:event_ProductsMouseEntered
 
-    private void ManufactureButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManufactureButton1ActionPerformed
+    private void ProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ManufactureButton1ActionPerformed
+    }//GEN-LAST:event_ProductsActionPerformed
+
+    private void ContractButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContractButtonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContractButtonMouseEntered
+
+    private void ContractButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContractButtonActionPerformed
+        // TODO add your handling code here:
+        Contract_Details obj = new Contract_Details();
+        obj.setVisible(true);
+       // this.setVisible(false);
+    }//GEN-LAST:event_ContractButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,18 +266,19 @@ public class frame1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new frame1().setVisible(true);
-               frame1 so = new frame1();
-               so.setVisible(true);
+               new frame1().setVisible(true);
+            //   frame1 so = new frame1();
+            //   so.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ContractButton;
+    private javax.swing.JButton CustomerDetails;
     private javax.swing.JButton ManufactureButton;
-    private javax.swing.JButton ManufactureButton1;
+    private javax.swing.JButton Products;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
