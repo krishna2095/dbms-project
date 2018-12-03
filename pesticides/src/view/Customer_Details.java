@@ -461,7 +461,7 @@ public class Customer_Details extends javax.swing.JFrame {
             conn= MySqlConnect.ConnectDB();
             String sql = "INSERT INTO `pesticides forum work flow`.`customer` ( `name`, `address`, `phoneno`, `gstin`) VALUES ( ?, ?, ?, ?)";
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1,cname.getText());
+            pst.setString(1,cname.getText().toLowerCase());
             pst.setString(2,Address.getText());
             pst.setInt(3,Integer.parseInt(cphone.getText()));
             pst.setString(4,gst.getText());
