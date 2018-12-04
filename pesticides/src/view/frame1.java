@@ -213,7 +213,7 @@ public class frame1 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
             // TODO add your handling code here:
-        Booking_Details Bd = new Booking_Details();
+        B_Details Bd = new B_Details();
         Bd.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -223,6 +223,8 @@ public class frame1 extends javax.swing.JFrame {
 
     private void ProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductsActionPerformed
         // TODO add your handling code here:
+        products_details pd = new products_details();
+        pd.setVisible(true);
     }//GEN-LAST:event_ProductsActionPerformed
 
     private void ContractButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContractButtonMouseEntered

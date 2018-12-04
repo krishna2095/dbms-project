@@ -72,6 +72,10 @@ public class Contract_Details extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         dtable = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -300,28 +304,28 @@ public class Contract_Details extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Add Contract", jPanel1);
 
-        jLabel7.setText("Due_Dates of Customers ");
+        jLabel7.setText("Due_Dates of Contract");
 
         dtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Due_id", "Cid", "Date", "Due_date", "Due_Cost"
+                "Due_id", "mid", "cid", "Date", "Due_date", "due_cost"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -365,6 +369,75 @@ public class Contract_Details extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Due_dates", jPanel2);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "MANUFACTURER NAME", "AMOUNT", "DATE", "DUE_DATE"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable1);
+
+        jButton4.setText("LOAD");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton4)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(jButton4)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("invoice", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -515,7 +588,7 @@ public class Contract_Details extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
            conn =MySqlConnect.ConnectDB();
-           String sql = "select * from due_dates";
+           String sql = "select A.due_id,B.mid,A.cid,A.date,A.due_date,A.due_cost from due_dates A,contract B where A.cid=B.cid";
            PreparedStatement p= conn.prepareStatement(sql);
            ResultSet r = p.executeQuery();
            int rcount=0;
@@ -526,6 +599,7 @@ public class Contract_Details extends javax.swing.JFrame {
                 String column3 = r.getString(3);
                 String column4 = r.getString(4);
                 String column5  = r.getString(5);
+                String column6 = r.getString(6);
                 md.setRowCount(rcount + 1);
                 if (dtable.getModel() != null) {
                     dtable.getModel().setValueAt(column1, rcount, 0);
@@ -533,6 +607,7 @@ public class Contract_Details extends javax.swing.JFrame {
                     dtable.getModel().setValueAt(column3, rcount, 2);
                     dtable.getModel().setValueAt(column4, rcount, 3);
                     dtable.getModel().setValueAt(column5, rcount, 4);
+                    dtable.getModel().setValueAt(column6, rcount, 5);
                  }
                 rcount++;
             }
@@ -542,6 +617,35 @@ public class Contract_Details extends javax.swing.JFrame {
             System.out.print(ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        try{
+            conn= MySqlConnect.ConnectDB();
+            String sql = "SELECT A.M_NAME,SUM(due_COST),b.date,DATE_ADD(b.date,interval 45 day) as due_date FROM manufacturer A,contract B,due_dates C WHERE A.MID=B.MID AND B.CID=C.CID  GROUP BY(A.M_NAME)";
+        PreparedStatement st = conn.prepareStatement(sql);
+        ResultSet result = st.executeQuery();
+         DefaultTableModel md = (DefaultTableModel) jTable1.getModel();
+         int rcount=0;
+             while (result.next()) {
+                String column1 = result.getString(1);
+                String column2 = result.getString(2);
+                String column3 = result.getString(3);
+                String column4 = result.getString(4);
+                md.setRowCount(rcount + 1);
+                if (jTable1.getModel() != null) {
+                    jTable1.getModel().setValueAt(column1, rcount, 0);
+                    jTable1.getModel().setValueAt(column2, rcount, 1);
+                    jTable1.getModel().setValueAt(column3, rcount, 2);
+                    jTable1.getModel().setValueAt(column4, rcount, 3);
+                 }
+                rcount++;
+            }
+        }
+        catch(SQLException ex){
+            System.out.print(ex);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -588,6 +692,7 @@ public class Contract_Details extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -598,10 +703,13 @@ public class Contract_Details extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField mid;
     private javax.swing.JTextField pid;

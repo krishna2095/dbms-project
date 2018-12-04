@@ -395,7 +395,7 @@
                   <Font name="Verdana" size="13" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Enter the Customer_id"/>
+                <Property name="text" type="java.lang.String" value="Enter the Customer_name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField1_id">

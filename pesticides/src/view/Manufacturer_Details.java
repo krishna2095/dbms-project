@@ -60,11 +60,6 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         mtable = new javax.swing.JTable();
         Lbutton = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField1_id = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        delete_message = new java.awt.Label();
         jPanel11 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         pidtextfield = new javax.swing.JTextField();
@@ -72,6 +67,11 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         ptable = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField1_id = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        delete_message = new java.awt.Label();
         label1 = new java.awt.Label();
 
         jMenu1.setText("jMenu1");
@@ -315,54 +315,6 @@ public class Manufacturer_Details extends javax.swing.JFrame {
 
         MD.addTab("Manufacturer_details", jPanel2);
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Enter the manufacturer id");
-
-        jButton2.setFont(new java.awt.Font("Georgia", 1, 13)); // NOI18N
-        jButton2.setText("Delete");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 171, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(133, 133, 133)
-                .addComponent(jTextField1_id, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(465, 465, 465))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(405, 405, 405)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(delete_message, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(183, 183, 183)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1_id, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(189, 189, 189)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(delete_message, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
-        );
-
-        MD.addTab("Delete_Manufacturer", jPanel1);
-
         jTextField1.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jTextField1.setText("To Display products of Particular manufacturer");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -441,7 +393,7 @@ public class Manufacturer_Details extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("Enter the Manufacturer_Id");
+        jLabel19.setText("Enter the Manufacturer_name");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -480,6 +432,53 @@ public class Manufacturer_Details extends javax.swing.JFrame {
 
         MD.addTab("Products", jPanel11);
 
+        jLabel6.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Enter the manufacturer name");
+
+        jButton2.setFont(new java.awt.Font("Georgia", 1, 13)); // NOI18N
+        jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(252, 252, 252)
+                .addComponent(delete_message, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(365, 365, 365))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(422, 422, 422)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jTextField1_id, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(161, 161, 161))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1_id, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                .addGap(103, 103, 103)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(delete_message, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+
+        MD.addTab("Delete_Manufacturer", jPanel1);
+
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setBackground(new java.awt.Color(204, 204, 204));
         label1.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
@@ -503,8 +502,9 @@ public class Manufacturer_Details extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(MD, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(MD, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -518,14 +518,21 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             conn = MySqlConnect.ConnectDB();
+              String sql1 = "select mid from manufacturer where m_name = ?";
+                PreparedStatement st = conn.prepareStatement(sql1);
+                st.setString(1,jTextField1_id.getText().toLowerCase());
+                ResultSet result = st.executeQuery();
+                result.next();
+                int mid = result.getInt("mid");
             String sql2= "DELETE FROM `pesticides forum work flow`.`manufacturer` WHERE ( `mid` = ? )";
             PreparedStatement pst =  conn.prepareStatement(sql2);
             // System.out.println(Integer.parseInt(jTextField1_id.getText()));
-            int X=Integer.parseInt(jTextField1_id.getText());
-            pst.setInt(1, X);
+           // int X=Integer.parseInt(jTextField1_id.getText());
+            pst.setInt(1, mid);
             // pst.setString(1,(String)jTextField1_id.getText());
             System.out.println(pst);
-            pst.execute();
+            boolean x = pst.execute();
+            if(x==false)
             delete_message.setText("manufacturer is deleted");
 
         }catch(SQLException ex){
@@ -633,10 +640,16 @@ public class Manufacturer_Details extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
                 conn = MySqlConnect.ConnectDB();
-            DefaultTableModel model = (DefaultTableModel) ptable.getModel();
+                 String sql1 = "select mid from manufacturer where m_name = ?";
+                PreparedStatement st = conn.prepareStatement(sql1);
+                st.setString(1,pidtextfield.getText().toLowerCase());
+                ResultSet result = st.executeQuery();
+                result.next();
+                int mid = result.getInt("mid");
+              DefaultTableModel model = (DefaultTableModel) ptable.getModel();
             String sql = "SELECT * FROM `pesticides forum work flow`.products WHERE MID = ? ";
             PreparedStatement pst =  conn.prepareStatement(sql);
-            pst.setInt(1,Integer.parseInt(pidtextfield.getText()));
+            pst.setInt(1,mid);
             ResultSet rst = pst.executeQuery();
             int rowcount=0;
             System.out.print(rst);

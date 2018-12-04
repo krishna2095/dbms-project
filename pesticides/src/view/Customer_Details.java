@@ -265,7 +265,7 @@ public class Customer_Details extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Enter the Customer_id");
+        jLabel6.setText("Enter the Customer_name");
 
         jButton2.setFont(new java.awt.Font("Georgia", 1, 13)); // NOI18N
         jButton2.setText("Delete");
@@ -391,11 +391,17 @@ public class Customer_Details extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             conn = MySqlConnect.ConnectDB();
+            String sql = "select cid from customer where name = ?";
+             PreparedStatement st = conn.prepareStatement(sql);
+                 st.setString(1,jTextField1_id.getText().toLowerCase());
+                 ResultSet result = st.executeQuery();
+                 result.next();
+                 int cid = result.getInt("cid");
             String sql2= "DELETE FROM `pesticides forum work flow`.`customer` WHERE ( `cid` = ? )";
             PreparedStatement pst =  conn.prepareStatement(sql2);
             // System.out.println(Integer.parseInt(jTextField1_id.getText()));
-            int X=Integer.parseInt(jTextField1_id.getText());
-            pst.setInt(1, X);
+            //int X=Integer.parseInt(jTextField1_id.getText());
+            pst.setInt(1, cid);
             // pst.setString(1,(String)jTextField1_id.getText());
                     pst.execute();
             int ex = pst.getUpdateCount();
