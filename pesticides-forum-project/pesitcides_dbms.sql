@@ -27,12 +27,11 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`customer` (
   `phoneno` VARCHAR(45) NOT NULL,
   `gstin` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cid`),
-  UNIQUE INDEX `customer_name_UNIQUE` (`name` ASC) VISIBLE,
   UNIQUE INDEX `phoneno_UNIQUE` (`phoneno` ASC) VISIBLE,
   UNIQUE INDEX `gstin_UNIQUE` (`gstin` ASC) VISIBLE,
   INDEX `custome_name` (`name` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 105
+AUTO_INCREMENT = 107
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -46,12 +45,13 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`booking_id` (
   `cid` INT(11) NOT NULL,
   `otype` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`Bid`),
-  UNIQUE INDEX `cid_UNIQUE` (`cid` ASC) VISIBLE,
   CONSTRAINT `fk_customers`
     FOREIGN KEY (`cid`)
-    REFERENCES `pesticides forum work flow`.`customer` (`cid`))
+    REFERENCES `pesticides forum work flow`.`customer` (`cid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 32
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -67,13 +67,12 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`manufacturer` (
   `contact_pearson` VARCHAR(45) NOT NULL,
   `m_gst` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`mid`),
-  UNIQUE INDEX `contact_pearson_UNIQUE` (`contact_pearson` ASC) VISIBLE,
   UNIQUE INDEX `m_gst_UNIQUE` (`m_gst` ASC) VISIBLE,
   UNIQUE INDEX `mid_UNIQUE` (`mid` ASC) VISIBLE,
   UNIQUE INDEX `m_name_UNIQUE` (`m_name` ASC) VISIBLE,
   UNIQUE INDEX `m_contact_no_UNIQUE` (`m_contact_no` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 8
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -86,13 +85,12 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`contract` (
   `date` DATE NULL DEFAULT NULL,
   `mid` INT(11) NOT NULL,
   PRIMARY KEY (`cid`),
-  UNIQUE INDEX `conid_UNIQUE` (`cid` ASC) VISIBLE,
   INDEX `FK_PersonOrder` (`mid` ASC) VISIBLE,
   CONSTRAINT `FK_PersonOrder`
     FOREIGN KEY (`mid`)
     REFERENCES `pesticides forum work flow`.`manufacturer` (`mid`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 49
+AUTO_INCREMENT = 64
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -111,7 +109,6 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`products` (
   `5L_cost` INT(11) NULL DEFAULT NULL,
   `10L_cost` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`pid`),
-  INDEX `product_name` (`product_name` ASC) VISIBLE,
   INDEX `fk_m` (`mid` ASC) VISIBLE,
   CONSTRAINT `fk_m`
     FOREIGN KEY (`mid`)
@@ -119,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`products` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 101
+AUTO_INCREMENT = 103
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -147,7 +144,6 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`c_products` (
   `p_cost` INT(11) NOT NULL,
   `vid` INT(11) NOT NULL,
   PRIMARY KEY (`c_pid`),
-  UNIQUE INDEX `c_pid_UNIQUE` (`c_pid` ASC) VISIBLE,
   INDEX `fk_contract_idx` (`cid` ASC) VISIBLE,
   INDEX `fk_products_idx` (`pid` ASC) VISIBLE,
   INDEX `fk_volumes_idx` (`vid` ASC) VISIBLE,
@@ -165,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`c_products` (
     FOREIGN KEY (`vid`)
     REFERENCES `pesticides forum work flow`.`volume_products` (`vid`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 8
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -180,7 +176,6 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`credit_bill` (
   `bill_amount` INT(11) NOT NULL,
   `due_date` DATE NOT NULL,
   PRIMARY KEY (`cdid`),
-  UNIQUE INDEX `cdid_UNIQUE` (`cdid` ASC) VISIBLE,
   INDEX `fk_orders_idx` (`credit_customerid` ASC) INVISIBLE,
   CONSTRAINT `fk_orders`
     FOREIGN KEY (`credit_customerid`)
@@ -195,18 +190,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`credit_customers` (
   `cid` INT(11) NULL DEFAULT NULL,
-  `customer_name` VARCHAR(45) NULL DEFAULT NULL)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `pesticides forum work flow`.`dead_lines of customer`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`dead_lines of customer` (
-  `deaddate` DATE NOT NULL,
-  `cid` INT(11) NOT NULL)
+  `customer_name` VARCHAR(45) NULL DEFAULT NULL,
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -222,13 +206,12 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`due_dates` (
   `due_date` VARCHAR(45) NOT NULL,
   `due_cost` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`due_id`),
-  UNIQUE INDEX `due_id_UNIQUE` (`due_id` ASC) VISIBLE,
   INDEX `fk_contract_idx` (`cid` ASC) VISIBLE,
   CONSTRAINT `fk_contract`
     FOREIGN KEY (`cid`)
     REFERENCES `pesticides forum work flow`.`contract` (`cid`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -243,7 +226,6 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`order_details` (
   `product_cost` INT(11) NOT NULL,
   `vid` INT(11) NOT NULL,
   PRIMARY KEY (`order_id`),
-  INDEX `fk_Booking_idx` (`bid` ASC) VISIBLE,
   INDEX `fk_products_idx` (`pid` ASC) VISIBLE,
   INDEX `fk_volumes _idx` (`vid` ASC) VISIBLE,
   CONSTRAINT `fk_Booking`
@@ -258,6 +240,7 @@ CREATE TABLE IF NOT EXISTS `pesticides forum work flow`.`order_details` (
     FOREIGN KEY (`vid`)
     REFERENCES `pesticides forum work flow`.`volume_products` (`vid`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 8
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -281,6 +264,27 @@ Set total_cost= Qunatity * cost;
 INSERT into due_dates(`cid`,`date`,`due_date`,`due_cost`) values 
 (cid,dat,adddate(dat,45),total_cost);
 END$$
+
+DELIMITER ;
+USE `pesticides forum work flow`;
+
+DELIMITER $$
+USE `pesticides forum work flow`$$
+CREATE
+DEFINER=`root`@`localhost`
+TRIGGER `pesticides forum work flow`.`booking_id_AFTER_INSERT`
+AFTER INSERT ON `pesticides forum work flow`.`booking_id`
+FOR EACH ROW
+BEGIN
+IF(NEW.OTYPE='credit') 
+THEN
+INSERT INTO credit_customers(cid,customer_name) 
+SELECT  NEW.cid,c.name
+FROM customer c 
+where cid = new.cid;
+ END IF;
+END$$
+
 
 DELIMITER ;
 
